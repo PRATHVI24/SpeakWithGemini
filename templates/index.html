@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Voice Assistant</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        #startBtn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #stopBtn {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .voice-select {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        .chat-container {
+            height: 400px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            max-width: 80%;
+        }
+
+        .user-message {
+            background-color: #e3f2fd;
+            margin-left: auto;
+        }
+
+        .assistant-message {
+            background-color: #f5f5f5;
+            margin-right: auto;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ccc;
+            transition: all 0.3s;
+        }
+
+        .status-indicator.ready { background-color: #4CAF50; }
+        .status-indicator.listening { background-color: #2196F3; }
+        .status-indicator.processing { background-color: #FFC107; }
+        .status-indicator.speaking { background-color: #9C27B0; }
+        .status-indicator.error { background-color: #f44336; }
+        .status-indicator.active { transform: scale(1.2); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AI Voice Assistant</h1>
+        </div>
+
+        <div class="controls">
+            <button id="startBtn" class="btn">Start Listening</button>
+            <button id="stopBtn" class="btn" disabled>Stop Listening</button>
+            <select id="voiceSelect" class="voice-select">
+                <option value="indian-male">Indian Male</option>
+                <option value="indian-female">Indian Female</option>
+            </select>
+        </div>
+
+        <div class="chat-container" id="chatContainer">
+            <!-- Messages will be added here dynamically -->
+        </div>
+
+        <div class="status">
+            <div id="statusIndicator" class="status-indicator ready"></div>
+            <span id="statusText">Ready to listen</span>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/static/js/vad-processor.js"></script>
+    <script src="/static/js/voiceAssistant.js"></script>
+</body>
+</html>
