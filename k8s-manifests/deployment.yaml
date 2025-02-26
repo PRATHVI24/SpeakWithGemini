@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: speakwithgemini
-          image: asia-south1-docker.pkg.dev/my-project-10242-451907/prathvi/prathvi-app:latest  
+          image: asia-south1-docker.pkg.dev/my-project-10242-451907/prathvi/prathvi-app:05dc1736e555a9681980c8c2bfa254cd32ceb846
           ports:
             - containerPort: 8000
           env:
