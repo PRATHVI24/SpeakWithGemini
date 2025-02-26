@@ -51,11 +51,11 @@ jobs:
         run: |
           gcloud auth configure-docker asia-south1-docker.pkg.dev
 
-      - name: Create Artifact Registry Repository (if not exists)
-        # run: |
-        #   gcloud artifacts repositories create ${{ env.REPOSITORY }} \
-        #     --location=${{ env.GAR_LOCATION }} \
-        #     --repository-format=docker || echo "Repository already exists"
+      # - name: Create Artifact Registry Repository (if not exists)
+      #   # run: |
+      #   #   gcloud artifacts repositories create ${{ env.REPOSITORY }} \
+      #   #     --location=${{ env.GAR_LOCATION }} \
+      #   #     --repository-format=docker || echo "Repository already exists"
 
 
       - name: Build and Push
