@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: speakwithgemini
+  labels:
+    app: speakwithgemini
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: speakwithgemini
+  template:
+    metadata:
+      labels:
+        app: speakwithgemini
+    spec:
+      containers:
+        - name: speakwithgemini
+          image: asia-south1-docker.pkg.dev/my-project-10242-451907/prathvi/prathvi-app:latest  
+          ports:
+            - containerPort: 8000
+          env:
+            - name: GEMINI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gemini-api-secret
+                  key: api-key
